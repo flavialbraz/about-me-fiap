@@ -10,14 +10,14 @@ import Footer from './components/Footer';
 function App() {
 
   return (
-    <div className="container">
-        <Header />
-        <Tecs />
+    <div className="container margin-top-10">
+        {/* <Header />
+        <Tecs /> */}
         <About />
-        <Projects />
-        <MoreAbout />
+        {/* <Projects />
+        <MoreAbout /> */}
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
   )
 }
