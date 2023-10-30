@@ -1,26 +1,18 @@
 
-
+import { NavLink } from "react-router-dom";
 const Header = () => {
 return (
 	<>
 	<header>
-		<div className="container top flex">
+		<div className="container top flex margin-top-2">
 			<nav>
-				<a href="#home"> Início </a>
-				<a href="#quem">Quem sou eu</a>
-				<a href="#projetos">Projetos</a>
-				<a href="#trabalhos"> O que faço </a>
+				<NavLink to="/"> Início </NavLink>
+				<NavLink to="/sobre"> Sobre & Formação </NavLink>
+				<NavLink to="/projetos"> Projetos/Experiencias </NavLink>
+				<NavLink to="/mais-sobre"> O que faço </NavLink>
+				<NavLink to="/hobbies"> Hobbies </NavLink>
 			</nav>
-
-			<div className="header-welcome" id="home">
-				<h6>Prezer! </h6>
-				<h1>Olá, eu sou Flávia Braz</h1>
-				<p> Desenvolvedora & UI Designer. </p>
-				<a href="#quem"> <button className="btn topo"> Conhecer mais </button></a>
 			</div>
-
-			<div className="img-welcome"></div>
-		</div>
 	</header>
 	</>
 );

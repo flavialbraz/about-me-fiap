@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import Header from './Header';
 import javascript from '../assets/images/javascript.svg'
 import node from '../assets/images/node.svg'
 import me from '../assets/images/me3.png'
@@ -42,9 +42,10 @@ const About = () => {
 
   return (
     <>
+      <Header />
       <section className="who flex" id="quem">
           <div className="more-about-me">
-              <h2>Quem eu sou </h2>
+              <h2>Quem eu sou & Formação </h2>
               <p> Olá! Que legal te ver por aqui! Como você vai? Eu me chamo Flávia. Sou uma carioca que ama códigos, ui design, séries e que acredita no poder da educação para mudar o mundo. Atualmente formada no programa “Desenvolve - Boticário” e cursando Sistemas para internet na FIAP. </p>
                   <div className="social-m">
                       <a href="https://instagram.com/alessadev"> <img src={instagram} width="45px" height="45px" alt="Instagram"/></a>
@@ -71,6 +72,8 @@ const About = () => {
       <section className="who get-cep">
         <div className="more-about-me flex"> 
             <div className="cep-container">
+            <h3 className='w-100 margin-top-2'> O lugar que chamo de lar </h3>
+
               <input
                 type="text"
                 placeholder="Digite o seu CPF"

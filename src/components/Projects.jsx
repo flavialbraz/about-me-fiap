@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
-const Projects = () => {   
+import Header from "./Header";
+import loadingSvg from '../assets/images/loading.svg'
+
+const Projects = () => {
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
+
     fetch('https://api.github.com/users/flavialbraz/repos?sort=created&direction=desc')
       .then(response => response.json())
       .then(data => {
@@ -20,32 +26,42 @@ const Projects = () => {
         });
         return Promise.all(promises);
       })
-      .then(data => setProjects(data))
-      .catch(error => console.error('Error:', error));
+      .then(data => {
+        setProjects(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        setLoading(false);
+      });
   }, []);
 
   return (
-    <section className="projects flex">
-      <div className="sec-title">
-        <h2 id="projetos"> Projetos </h2>
-      </div>
+    <>
+      <Header />
+      <section className="projects flex">
+        <div className="sec-title">
+          <h2 id="projetos"> Projetos - Experiências </h2>
+        </div>
 
-      <ul className="flex">
-        {projects.slice(0, 9).map((project, index) => (
-          <li className="card" key={index}>
-            <div className="image-card">
-            {project.readmeImage && <img src={project.readmeImage} alt={`Imagem do projeto ${index}`} />}
-              <a href={project.html_url} target="_blank" rel="noopener noreferrer" className="btn viewmore"> Acessar no GitHub </a>
-            </div>
-            <div className="card-body">
-              <h5>{project.language}</h5>
-              <h3>{project.name}</h3>
-              <p>{project.description}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
+        <ul className="flex">
+        <div className="loading">{loading && <p> <img src={loadingSvg} alt="Carregando" /></p>}</div>
+          {projects.slice(0, 9).map((project, index) => (
+            <li className="card" key={index}>
+              <div className="image-card">
+              {project.readmeImage && <img src={project.readmeImage} alt={`Imagem do projeto ${index}`} />}
+                <a href={project.html_url} target="_blank" rel="noopener noreferrer" className="btn viewmore"> Acessar no GitHub </a>
+              </div>
+              <div className="card-body">
+                <h5>{project.language}</h5>
+                <h3>{project.name}</h3>
+                <p>{project.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </>
   );
 }
 
